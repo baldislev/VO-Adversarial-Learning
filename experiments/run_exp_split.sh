@@ -10,7 +10,7 @@ TRAJ_LEN=8
 
 EPOCHS=20
 NORM='Linf'
-ATTACK="momentum"
+ATTACK="pgd"
 MINIBATCH=1
 SPLIT="0_1_2_3_4"
 
@@ -26,11 +26,12 @@ FLOW_FACTOR=0
 MOMENTUM=0.5
 RMSPROP=0.5
 ALPHA=0.05
-BETA=0.5
+BETA=0.7
+T_DECAY=5
 
 for EVAL_FOLDER in 0 1 2 3 4
 do
-	srun -c 2 --gres=gpu:1 -w lambda5 --pty python run_attacks.py \
+	srun -c 2 --gres=gpu:1 -w lambda4 --pty python run_attacks.py \
 		--save_imgs \
 		--save_best_pert \
 		--preprocessed_data \
@@ -45,6 +46,8 @@ do
 		--attack_norm $NORM \
 		--eval_folder $EVAL_FOLDER \
 		--alpha $ALPHA \
+		--beta $BETA \
+		--t_decay $T_DECAY \
 		--momentum $MOMENTUM \
 		--rmsprop_decay $RMSPROP \
 		--attack_t_crit $T_CRIT \
