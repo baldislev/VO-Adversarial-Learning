@@ -10,6 +10,14 @@
 > * To run the attack: ./run.sh <br>
 > Edit run.sh if needed to change arguments. Arg k is set to 2 for fast run, real computation will have k close to 100.
 
+## Structure:
+>* ./run_attacks.py - main script for adversarial learning. Accepts CLI arguments. Invoked by ./run.sh.
+>* ./utils.py - CLI parser and initializer of parameters for the attacks.
+>* models - folder with pretrained VO systems.
+>* data - trajectories for adversarial learning.
+>* attacks - implementations of several PGD based optimizers.
+>* experiments - scripts of some of the conducted experiments as well as results parsers.
+
 
 ## Data:
 > <b>data</b> folder consists of <b>VO_adv_project_train_dataset_8_frames</b> folder, that has 5 initial position folders. <br>
