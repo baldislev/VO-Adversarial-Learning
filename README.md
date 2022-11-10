@@ -11,8 +11,10 @@
 > Edit run.sh if needed to change arguments. Arg k is set to 2 for fast run, real computation will have k close to 100.
 
 ## Structure:
+> Main modules of the project are:
 >* ./run_attacks.py - main script for adversarial learning. Accepts CLI arguments. Invoked by ./run.sh.
 >* ./utils.py - CLI parser and initializer of parameters for the attacks.
+>* loss.py - different criteria implementations.
 >* models - folder with pretrained VO systems.
 >* data - trajectories for adversarial learning.
 >* attacks - implementations of several PGD based optimizers.
