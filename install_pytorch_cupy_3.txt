@@ -1,0 +1,15 @@
+# orig:
+conda create --name pytorch-cupy-3 pandas python=3.7 pip scipy
+conda activate pytorch-cupy-3
+conda install -c conda-forge cudatoolkit=11.1 cudnn opencv matplotlib tqdm
+conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch-lts -c nvidia
+conda install -c conda-forge cupy=8 kornia
+
+# this worked for me:
+mamba create --name pytorch-cupy-3 pandas python=3.7 pip scipy
+mamba activate pytorch-cupy-3
+mamba install -c conda-forge cudatoolkit=11.1 cudnn opencv matplotlib tqdm
+mamba install pytorch torchaudio cudatoolkit=11.1 -c pytorch-lts -c nvidia
+mamba install -c conda-forge cupy=8 kornia
+pip3 install torchvision==0.9.2 --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
+pip install tensorboard
