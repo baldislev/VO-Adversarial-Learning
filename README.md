@@ -61,10 +61,11 @@
 > We might need to run some experiments to determine what criterions will be better suited for train/evalutaion. <br>
 > But it seems like RMPS based loss will serve better for train criterion, while RMS based - for evalutaion criterion. <br>
 > 
-> As stated before we aim to maximize the Test criterion which is based only on the Translation, but such loss is not <br>
-> sufficiently smooth, therefore we need to train and evaluate on a different set of criterions which will be from one side <br>
-> smooth enough for gradietn calculation during training and from the other side - provide insight into generalization properties <br>
-> during evaluation. For that purpose we need to incorporate rotation and optical flow into the loss functions.
+> As stated before we aim to maximize the Test criterion which is based only on the Translation, <br>
+> but such loss is not sufficiently smooth, therefore we need to train and evaluate on a different <br>
+> set of criterions which will be from one side smooth enough for gradietn calculation during training <br>
+> and from the other side - provide insight into generalization properties during evaluation.<br>
+> For that purpose we need to incorporate rotation and optical flow into the loss functions.
 
 ## Results:
 > In report.pdf.
