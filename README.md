@@ -1,4 +1,10 @@
 # Guidelines for the project:
+
+## Research:
+> We aim to optimize the adversarial properties of patch perturbations that will cause the VO system to deviate <br>
+> the most from it's current trajectory.<br>
+> More on the details of the subject and results of our research in <b>report.pdf</b>.
+
 ## Install and Run:
 > * To install follow the guidelines in install_pytorch_cupy_3.txt. <br>
 > * To run the attack: ./run.sh <br>
@@ -6,8 +12,6 @@
 
 
 ## Data:
-> <b>data</b> folder is placed inside the <b>code</b> folder since it seems like main script will search for input <br>
-> inside the root folder. But it can be changed if needed.
 > <b>data</b> folder consists of <b>VO_adv_project_train_dataset_8_frames</b> folder, that has 5 initial position folders. <br>
 > Each initial position folder has 10 different trajectories that start from the same position. <br>
 > It is posible to replace <b>VO_adv_project_train_dataset_8_frames</b> with <b>train</b> and <b>test</b> folders. <br>
@@ -46,20 +50,13 @@
 >
 
 ## Attack Optimizer:
-> This project emphasized on modification of PGD optimizers in order to improve adverarial propertie <br>.
-> 
+> This project emphasized on modification of PGD optimizers in order to improve adverarial properties. <br>
+> Modifications that were consider are such as Momentum, RSMPROP, Auto-PGD, Stochastic.
 
 ## Optimization and evaluation criteria:
-> The provided <b>VOCriterion</b> in <b>loss.py</b> <b>apply()</b> method only uses translations for the loss calculation. <br>
-> We need to implement <b>calc_rot_crit()</b> and <b>calc_flow_crit()</b> methods that currently return 0. <br>
-> First one is a loss caused by rotation deviation, while the second one based on the optical flow deviation. <br>
-> Another important thing is that train criterion is different from the test criterion. <br> 
-> <b>att_eval_criterion</b> is used for test evaluation inside <b>attack_eval()</b> after each train epoch. <br>
-> <b>att_criterion</b> is applied inside <b>gradient_ascent_step()</b>.
+> The <b>VOCriterion</b> in <b>loss.py</b> represents the base for any criterion.<br>
+> It supports aggregating different losses such as: Translation, Rotation, Optical Flow and Target Translation.
 > CLI accepts arguments needed for creating those loss functions. <br>
-> The creation of <b>att_eval_criterion</b> is happening inside <b>compute_attack_args()</b> method. <br>
-> Which uses one of the preinstantiated versions of <b>VOCriterion</b> that were computed in <b>compute_VO_args()</b>. <br>
-> The creation of <b>att_criterion</b> is inside <b>compute_VO_args()</b> and is also based on <b>VOCriterion</b> object. <br>
 > 
 > We might need to run some experiments to determine what criterions will be better suited for train/evalutaion. <br>
 > But it seems like RMPS based loss will serve better for train criterion, while RMS based - for evalutaion criterion. <br>
@@ -69,3 +66,6 @@
 > smooth enough for gradietn calculation during training and from the other side - provide insight into generalization properties <br>
 > during evaluation. For that purpose we need to incorporate rotation and optical flow into the loss functions.
 
+## Results:
+> In report.pdf.
+> 
